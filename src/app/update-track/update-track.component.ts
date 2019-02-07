@@ -12,11 +12,13 @@ export class UpdateTrackComponent implements OnInit {
   public artist: string;
   public mbid1: string;
   public track: string;
+  public img: string;
 
   public trackinfo = {
     trackID : this.mbid1,
     trackName: this.track,
     trackComments : this.artist,
+    imgUrl: this.img
   };
 
   public tracks;
@@ -35,11 +37,16 @@ export class UpdateTrackComponent implements OnInit {
       this.trackinfo.trackName=data.track.name;
       this.trackinfo.trackComments=this.artist;
       this.trackinfo.trackID=this.mbid1;
+      this.trackinfo.imgUrl=this.img;
+
+      this.trackinfo.imgUrl=data.track.album.image[3]['#text'];
 
       console.log(this.trackinfo);
 
       this.tracks = this.muzixservice.updateTrack(this.trackinfo).subscribe(
         (data1) => {
+          this.tracks=data1;
+          this.router.navigate(['/myplaylist'])
         },
         error => {
           console.log('some error occured in Update Track');

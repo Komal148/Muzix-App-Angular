@@ -5,11 +5,11 @@
   </div>
   <div class="row" style="text-align:center" >
     <div *ngFor="let blog of tracks" class="col-md-4">
-      <!-- <img class="card-img-top" src='{{blog.image[3]["#text"]}}' alt="Card image cap"> -->
+      <img class="card-img-top" src='{{blog.imgUrl}}' alt="Card image cap">
       <div class="panel panel-default">
-        <div class="panel-heading">{{blog.name| uppercase}}</div>
+        <div class="panel-heading">{{blog.trackName| uppercase}}</div>
+        <div class="panel-heading">{{blog.trackComments }}</div>
         <div class="panel-body">
-          {{ blog.artist }} 
           <p><input class="form-control mr-sm-6" type="text" [(ngModel)]="blog.comment"></p>
         </div>
         <div class="panel-footer"><br /> 

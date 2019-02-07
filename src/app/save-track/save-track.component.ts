@@ -20,18 +20,12 @@ export class SaveTrackComponent implements OnInit {
     trackID : this.mbid1,
     trackName: this.track,
     trackComments : this.artist,
-    // img : this.image
-
-    // id : this.mbid1,
-    // name: this.track,
-    // comment : this.artist,
-    
+    imgUrl : this.image
   };
   constructor(private _route: ActivatedRoute, private router: Router, public muzixservice: MuzixHttpService) {
 
    }
   ngOnInit() {
-    //console.log("Inside Save Track")
     this.mbid1 = this._route.snapshot.paramMap.get('mbid');
     console.log(this.mbid1);
     this.muzixservice.findtrack(this.mbid1).subscribe(
@@ -41,8 +35,10 @@ export class SaveTrackComponent implements OnInit {
         this.trackinfo.trackName = data.track.name;
         this.trackinfo.trackComments = data.track.artist.name;
         this.trackinfo.trackID = this.mbid1;
-        // this.trackinfo.img = data.track.album.image[3]['#text'];
-        // console.log('IMG : ' + this.trackinfo.img);
+        this.trackinfo.imgUrl=this.image;
+        
+        this.trackinfo.imgUrl = data.track.album.image[3]['#text'];
+        console.log('IMG : ' + this.trackinfo.imgUrl);
         console.log(this.trackinfo);
        const m = this.muzixservice.saveTrack(this.trackinfo).subscribe(
         data1 => {

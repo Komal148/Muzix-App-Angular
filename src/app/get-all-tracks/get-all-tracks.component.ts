@@ -14,18 +14,16 @@ export class GetAllTracksComponent implements OnInit {
   public artist: string;
   public mbid1: string;
   public track: string;
+  public image: string; 
 
   public trackinfo = {
     trackID : this.mbid1,
     trackName: this.track,
     trackComments : this.artist,
+    imgUrl : this.image
   };
 
   ngOnInit() {
       this.muzixservice.getAllTracks().subscribe((data) => this.tracks = data);
     }
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log('Changes : ' + changes);
-  // }
 }
