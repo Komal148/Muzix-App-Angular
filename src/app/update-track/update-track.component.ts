@@ -23,7 +23,7 @@ export class UpdateTrackComponent implements OnInit {
 
   public tracks;
   constructor(private _route: ActivatedRoute, private router: Router, public muzixservice: MuzixHttpService) {
-
+    alert('The track is Updated');
   }
  ngOnInit() {
    console.log("Update Track");
@@ -46,7 +46,9 @@ export class UpdateTrackComponent implements OnInit {
       this.tracks = this.muzixservice.updateTrack(this.trackinfo).subscribe(
         (data1) => {
           this.tracks=data1;
+          console.log('Inside Update :')
           this.router.navigate(['/myplaylist'])
+          
         },
         error => {
           console.log('some error occured in Update Track');

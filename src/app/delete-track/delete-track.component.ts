@@ -20,7 +20,9 @@ export class DeleteTrackComponent implements OnInit {
   };
 
   public tracks;
-  constructor(private _route: ActivatedRoute, private router: Router, public muzixservice: MuzixHttpService) { }
+  constructor(private _route: ActivatedRoute, private router: Router, public muzixservice: MuzixHttpService) {
+    alert('The track is Deleted');
+   }
 
   ngOnInit() {
     console.log('DeleteTrack');
@@ -32,9 +34,8 @@ export class DeleteTrackComponent implements OnInit {
           this.trackinfo.trackName = data.track.name;
           this.trackinfo.trackComments = data.track.artist.name;
           console.log(this.trackinfo.trackID);
-          console.log("DT");
-          this.muzixservice.deleteTrack(this.trackinfo.trackID).subscribe((data1) => {
-            this.track = data1;
+           this.muzixservice.deleteTrack(this.trackinfo.trackID).subscribe((data1) => {
+            this.tracks = data1;
             this.router.navigate(['/myplaylist']);
           });
     });

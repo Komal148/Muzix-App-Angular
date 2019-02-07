@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AlertsModule } from 'angular-alert-module'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchTrackComponent } from './search-track/search-track.component';
@@ -43,7 +43,9 @@ import { NavigationComponent } from './navigation/navigation.component';
       {path: 'home', component: HomeComponent},
       {path: 'updatetrack/:mbid/:comment', component: UpdateTrackComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'}
-    ])
+    ]),
+    AlertsModule.forRoot()
+
   ],
   providers: [MuzixHttpService],
   bootstrap: [AppComponent]

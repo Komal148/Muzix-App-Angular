@@ -23,7 +23,7 @@ export class SaveTrackComponent implements OnInit {
     imgUrl : this.image
   };
   constructor(private _route: ActivatedRoute, private router: Router, public muzixservice: MuzixHttpService) {
-
+    alert('The track is Added');
    }
   ngOnInit() {
     this.mbid1 = this._route.snapshot.paramMap.get('mbid');
